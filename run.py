@@ -11,3 +11,16 @@ class Ship:
 
     def is_sunk(self):
         return len(self.positions) == 0
+
+
+class Board:
+    """
+    Main board class. Has methods for adding ships,
+    guesses, and printing the board.
+    """
+    def __init__(self):
+        self.taken_positions = []
+        self.ships = []
+        self.hits = []
+        self.misses = []
+        self.completions = []
