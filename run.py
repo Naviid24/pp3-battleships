@@ -239,7 +239,7 @@ class Game:
                 self.computer_tactics = self.calc_tactics(shot)
             elif self.computer_tactics:
                 self.computer_tactics.pop(0)
-                
+
     def calc_tactics(self, shot):
         tactics = [shot - 1, shot + 1, shot - 10, shot + 10]
         valid_tactics = [
@@ -248,3 +248,19 @@ class Game:
         ]
         random.shuffle(valid_tactics)
         return valid_tactics
+
+    def start(self):
+        while True:
+            self.__init__()  # Reset the game state
+            self.setup()
+            for i in range(80):
+                self.play_turn(is_player=True)
+                if self.check_win(self.computer_board):
+                    print(f"End of game - Player wins in {i} turns!")
+                    break
+                self.play_turn(is_player=False)
+                if self.check_win(self.player_board):
+                    print(f"End of game - Computer wins in {i} turns!")
+                    break
+            if not self.ask_play_again():
+                break
