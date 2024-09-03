@@ -170,7 +170,7 @@ class Game:
         while True:
             print("Place the ship manually(m) automatically (a)?")
             print("Type 'exit' to quit:")
-            choice = str(input()).lower()
+            choice = str(input("m or a or exit \n")).lower()
             if choice == "m":
                 self.player_board.add_ship(ship)
                 break
@@ -194,7 +194,7 @@ class Game:
     def get_shot(self, guesses):
         while True:
             try:
-                shot = input("Please enter your guess: ")
+                shot = input("Please enter your guess: \n")
                 shot = int(shot)
                 if 0 <= shot <= 99 and shot not in guesses:
                     guesses.append(shot)
@@ -257,7 +257,7 @@ class Game:
 
     def ask_play_again(self):
         while True:
-            choice = input("Do you want to play again? (y/n): ").lower()
+            choice = input("Do you want to play again? (y/n): \n").lower()
             if choice == 'y':
                 return True
             elif choice == 'n':
@@ -308,7 +308,7 @@ def welcome_in():
     print("To start the game please enter your name below")
     print("-" * 35)
     while True:
-        name = input("Please enter your name: ")
+        name = input("Please enter your name: \n")
         if not name.isalpha():
             print("Invalid data entered, please enter your name")
         else:
