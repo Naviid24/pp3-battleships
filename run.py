@@ -211,6 +211,13 @@ class Game:
         self.computer_guesses.append(shot)
         return shot
 
+    def update_scores(self, hits, is_player):
+        if hits:
+            if is_player:
+                self.player_score += 1
+            else:
+                self.computer_score += 1
+
     def play_turn(self, is_player):
         if is_player:
 
@@ -232,4 +239,12 @@ class Game:
                 self.computer_tactics = self.calc_tactics(shot)
             elif self.computer_tactics:
                 self.computer_tactics.pop(0)
-
+                
+    def calc_tactics(self, shot):
+        tactics = [shot - 1, shot + 1, shot - 10, shot + 10]
+        valid_tactics = [
+             t for t in tactics
+             if 0 <= t < 100 and t not in self.computer_guesses
+        ]
+        random.shuffle(valid_tactics)
+        return valid_tactics
