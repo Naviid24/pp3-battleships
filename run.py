@@ -201,3 +201,35 @@ class Game:
             except ValueError:
                 print("Invalid input. Please enter a valid number 0-99.")
 
+    def computer_shot(self):
+        if self.computer_tactics:
+            shot = self.computer_tactics.pop(0)
+        else:
+            shot = randrange(100)
+        while shot in self.computer_guesses:
+            shot = randrange(100)
+        self.computer_guesses.append(shot)
+        return shot
+
+    def play_turn(self, is_player):
+        if is_player:
+
+            # Player's turn
+            shot = self.get_shot(self.player_guesses)
+            hits = self.computer_board.check_shot(shot)
+            self.update_scores(hits, is_player)
+            self.computer_board.show_board(reveal_ships=False)
+        else:
+            # Computer's turn
+            shot = self.computer_shot()
+            hits = self.player_board.check_shot(shot)
+            self.update_scores(hits, is_player)
+            self.player_board.show_board(reveal_ships=True)
+            print(f"Player Score: {self.player_score}")
+            print(f"Computer Score: {self.computer_score}")
+            print("-"*35)
+            if hits:
+                self.computer_tactics = self.calc_tactics(shot)
+            elif self.computer_tactics:
+                self.computer_tactics.pop(0)
+
