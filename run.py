@@ -161,3 +161,43 @@ class Game:
             self.add_ship_for_player(ship)
         print("-" * 35)
         self.show_game_boards()
+
+    def add_ship_for_player(self, ship):
+
+        while True:
+            print("Place the ship manually(m) automatically (a)?")
+            print("Type 'exit' to quit:")
+            choice = str(input()).lower()
+            if choice == "m":
+                self.player_board.add_ship(ship)
+                break
+            elif choice == "a":
+                self.player_board.auto_add_ship(ship)
+                break
+            elif choice == "exit":
+                print("Exiting the game.")
+                exit()
+            else:
+                print("Invalid data entered.please try again")
+
+    def show_game_boards(self):
+        print("\nPlayer's Board:")
+        # Reveal ships on the player's board
+        self.player_board.show_board(reveal_ships=True)
+        print("\nComputer's Board:")
+        # Hide ships on the computer's board
+        self.computer_board.show_board(reveal_ships=False)
+
+    def get_shot(self, guesses):
+        while True:
+            try:
+                shot = input("Please enter your guess: ")
+                shot = int(shot)
+                if 0 <= shot <= 99 and shot not in guesses:
+                    guesses.append(shot)
+                    return shot
+                else:
+                    print("Invalid input data entered or used number entered")
+            except ValueError:
+                print("Invalid input. Please enter a valid number 0-99.")
+
