@@ -115,4 +115,49 @@ class Board:
                 row += ch
                 place += 1
             print(f"{x}  {row}")
-        print("-"*35)                 
+        print("-"*35)
+
+    def check_shot(self, shot):
+        for ship in self.ships:
+            if shot in ship.positions:
+                ship.positions.remove(shot)
+                if ship.is_sunk():
+                    self.completions.append(shot)
+                else:
+                    self.hits.append(shot)
+                return True
+        self.misses.append(shot)
+        return False
+
+class Game:
+    """
+    The Game class manages the setup and progression of the game.
+    It includes methods to initialize the game, handle shots on
+    both the player's and computer's boards, and track the scores
+    for both. At the end of the game, it determines the winner
+    and allows the user to either play again or quit.
+    """
+    def __init__(self):
+        self.player_board = Board()
+        self.computer_board = Board()
+        self.player_guesses = []
+        self.computer_guesses = []
+        self.computer_tactics = []
+        self.player_score = 0
+        self.computer_score = 0
+
+    def setup(self):
+        ships_sizes = [5, 4, 3, 3, 2, 2]
+        # Automatically place ships on the computer's board
+        for size in ships_sizes:
+            ship = Ship(size)
+            self.computer_board.auto_add_ship(ship)
+
+        # Allow the player to choose manual or automatic
+        # placement for each ship
+        for size in ships_sizes:
+            ship = Ship(size)
+            # Use the new method for placing ships
+            self.add_ship_for_player(ship)
+        print("-" * 35)
+        self.show_game_boards()
