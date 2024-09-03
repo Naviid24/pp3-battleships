@@ -249,6 +249,20 @@ class Game:
         random.shuffle(valid_tactics)
         return valid_tactics
 
+    def check_win(self, board):
+        return all(ship.is_sunk() for ship in board.ships)
+
+    def ask_play_again(self):
+        while True:
+            choice = input("Do you want to play again? (y/n): ").lower()
+            if choice == 'y':
+                return True
+            elif choice == 'n':
+                print("Thank you for playing!")
+                return False
+            else:
+                print("Invalid data, please enter 'y' for yes or 'n' for no.")
+
     def start(self):
         while True:
             self.__init__()  # Reset the game state
@@ -264,3 +278,5 @@ class Game:
                     break
             if not self.ask_play_again():
                 break
+
+
