@@ -279,4 +279,43 @@ class Game:
             if not self.ask_play_again():
                 break
 
+def welcome_in():
+    """
+    Welcome to the user and explain about the game and the game's rules.
+    Ask user to enter his name.
+    """
+    print("-" * 35)
+    print("Welcome Captain to THE BATTLE OF SHIPS!!")
+    print("Number of ships: 6 in vary length")
+    print("The board size is 10 x 10")
+    print("You can locate your ship horizentaly or verticaly")
+    print("Your ship should be located in one row or column")
+    print("Top left coordinate is 0")
+    print("Bottom right coordinate is 99")
+    print("You can not guess same number more than once")
+    print(
+        "To locate your ship vertically, add or subtract 10 "
+        "to your first number and the last number you chose"
+    )
+    print(
+        "To locate your ship horizontally, add or subtract 1 "
+        "from the first and last number you chose"
+    )
+    print("To start the game please enter your name below")
+    print("-" * 35)
+    while True:
+        name = input("Please enter your name: ")
+        if not name.isalpha():
+            print("Invalid data entered, please enter your name")
+        else:
+            print(f"welcome Captain {name} ")
+            break
+    print("-" * 35)
+
+
+# To start the game
+welcome_in()
+game = Game()
+game.start()
+
 
