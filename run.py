@@ -1,3 +1,5 @@
+import random
+from random import randrange
 
 
 class Ship:
@@ -60,16 +62,16 @@ class Board:
                     except ValueError as e:
                         print(f"Error: {e}. Please enter a valid number.")
 
-        # Check if the coordinates are valid
-        if self.check_ok(boat):
-            print("Your ship is located truely")
-            print()
-            ship.positions = boat
-            self.taken_positions += boat
-            self.ships.append(ship)
-            break
-        else:
-            print("Error: Please enter valid number")
+            # Check if the coordinates are valid
+            if self.check_ok(boat):
+                print("Your ship is located truely")
+                print()
+                ship.positions = boat
+                self.taken_positions += boat
+                self.ships.append(ship)
+                break
+            else:
+                print("Error: Please enter valid number")
 
     def auto_add_ship(self, ship):
         while True:
@@ -128,6 +130,7 @@ class Board:
                 return True
         self.misses.append(shot)
         return False
+
 
 class Game:
     """
@@ -279,6 +282,7 @@ class Game:
             if not self.ask_play_again():
                 break
 
+
 def welcome_in():
     """
     Welcome to the user and explain about the game and the game's rules.
@@ -317,5 +321,3 @@ def welcome_in():
 welcome_in()
 game = Game()
 game.start()
-
-
