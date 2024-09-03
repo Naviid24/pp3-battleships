@@ -90,4 +90,29 @@ class Board:
                 ship.positions = boat
                 self.taken_positions += boat
                 self.ships.append(ship)
-                break                      
+                break
+
+    def show_board(self, reveal_ships=False):
+        print("            Battleships    ")
+        print("    0  1  2  3  4  5  6  7  8  9")
+        place = 0
+        for x in range(10):
+            row = ""
+            for y in range(10):
+                if (
+                    reveal_ships and place in self.taken_positions and
+                    place not in self.hits and place not in self.completions
+                ):
+                    ch = " @ "  # Display ship positions if revealing ships
+                elif place in self.hits:
+                    ch = " X "
+                elif place in self.misses:
+                    ch = " o "
+                elif place in self.completions:
+                    ch = " S "
+                else:
+                    ch = " _ "
+                row += ch
+                place += 1
+            print(f"{x}  {row}")
+        print("-"*35)                 
