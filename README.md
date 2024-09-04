@@ -1,4 +1,4 @@
-# The Quest For The Lost Treasure
+# The Battle of Ships
 
 ![Website Application Mock Up](assets/the_quest_mockup_screenshot.png)
 
