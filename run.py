@@ -168,9 +168,9 @@ class Game:
     def add_ship_for_player(self, ship):
 
         while True:
-            print("Place the ship manually 'm', automatically 'a !!")
+            print("Place the ship manually 'm', automatically 'a' !!")
             print("Type 'exit' to quit:")
-            choice = str(input("m or a or exit \n")).lower()
+            choice = str(input("\n")).lower()
             if choice == "m":
                 self.player_board.add_ship(ship)
                 break
