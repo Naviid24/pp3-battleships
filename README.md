@@ -1,18 +1,15 @@
 # The Battle of Ships
 
-![Website Application Mock Up](assets/the_quest_mockup_screenshot.png)
+![Website Application Mock Up](assets/mock-up/multi-device-mockup.png)
 
 
-## [Link to Live Website](https://the-quest-adventures-game-6da763a60cef.herokuapp.com/)
+## [Link to Live Website](https://battleships-game-board-5c541f06f660.herokuapp.com/)
 
 # Purpose 
 
-"The Quest for the Lost Treasure" is a Python command-line terminal text-based adventure game, which runs in the Code Institute mock terminal on Heroku. Embark on a thrilling journey through mysterious lands and uncover lost treasures in this adventure game that will put your decision-making skills to the test. 
+"The Battle of Ships" is a digital version of the traditional Battleships game, where player can compete against an AI opponent. The game serves as an example of how to structure a game project in code, manage game state, and implement basic AI logic. It is also a great resource for those interested in learning about grid-based games, strategy development, and user interaction in software. 
 
-It is an interactive game where you take on the role of a daring adventurer on a mission to uncover the lost treasure hidden centuries ago. Your decisions and choices will determine the outcome of your quest, and the path you choose to follow will lead to various encounters, puzzles and, ultimately, the treasure's location. The game has multiple success and failure endings. The target audience is everyone who like to play games and are fan of story based adventure games.
-
-- The game is build in Python as a Milestone Project#3 for the Code Institute's Full Stack Software
-  Development Course.
+- The game is built in Python as Milestone Project #3 for the Code Institute's Full Stack Software Development course.
 
 -------
 
@@ -23,52 +20,31 @@ It is an interactive game where you take on the role of a daring adventurer on a
 - As a user, I want to understand the purpose and intention of the site and application when I run
   the program.
 - As a user, I want the navigation to be intuitive and easy to understand.
-- As a user, I want to have an option to start the game.
 - As a user, I want to be able to enter my name before I start to play the game.
-- As a user, I would like to see a welcome message and my name added to storyline for more engaging
+- As a user, I would like to see a welcome message and my name added to the program for more engaging
   experience.
 - As a user, I want my input to be validated and error checked each time, so I can re-enter my
   input/choice if it is invalid.
 - As a user, I should not have to worry about capitalizing or lowercase when typing.
-- As a user I want the story line and narrative to be coherent, engaging and well-structured.
-- As a user, I want to receive the next part in the story depending on the input choices.
-- As a user, I want to reach the end of the game through one of the paths chosen, by either
-  succeeding or failing in the game.
-- As a user, I want see the final outcome of the game based on the choices made.
+- As a user, I want to see the score after each turn.
+- As a user, I want see the final result to see how many times I tried or computer tried to win the game.
 - As a user, I want to have an opportunity to play again regardless of success or failure in the game.
-- As a user, I want to have engaging narrative with multiple paths to explore for success and failure
-  outcomes.
-- As a user, I want to be presented with choices throughout the game that allow me to choose my path
-  based on story scenarios.
 
 ## Design
 
-### Data Model
+### Data Model Overview
 
-While implementing the project in Python, my primary focus was to incorporate Object Oriented Programming(OOP) Paradigms as the project necessity is functionality-centered. The mechanics, interactions, and story progression are implemented using text-based input and output. During discussion with my mentor, he guided me on how I can use data structures for story line instead of opting for text-based iteration to keep code well-structured and organized utilising "Don't Repeat Yourself"(DRY) principle.
+The Battleships game is built using an object-oriented approach, which organizes the game's logic into several classes: Ship, Board, and Game. Each class is designed to represent a specific aspect of the game, making the code modular, reusable, and easy to maintain.
 
-- Classes: I have used a single TreasureQuest Class containing story_description(dictionary)
-  attribute and methods to initialize the game instance for the text-based adventure game using that  dictionary, encapsulating the game's functionality and story.
+### Key Classes and Attributes
+#### 1. Ship
+ - Purpose: The Ship class represents a ship in the game, including its size and current status.
+##### Attributes:
+ - size: The size of the ship, representing how many grid cells it occupies.
+ - positions: A list of integers representing the ship's position on the grid. Each position corresponds to a cell number on the board.
+##### Methods:
+ - is_sunk(): Checks if the ship has been sunk, returning True if all positions have been hit (i.e., the list of positions is empty), otherwise False.
 
-- Dictionaries: The story_description dictionary contains the game's story line, choices, and outcomes
-  structured as follows:
-     - Keys: Strings representing different steps in the game.
-     - Values: Dictionaries containing:
-          1. "step_text": Text describing the current step.
-          2. "options" (Dictionary): Available choices and their corresponding steps.
-          3. "outcome": Outcome of the current step ("success" or "failure").
-
-- Functions: To keep code readable and reusable, functions(play_game, display_intro, start_game,
-  get_user_input) are  used to display the game's introduction and loop through the game's story, displaying text, options, and handle user choices, leading to different outcomes. 
-
-- Input Validation: Each user input is validated and handled raising appropriate error depending on
-  game stage and option to re-enter user input is provided if it is invalid.
-
-- Separation of Concerns: Separated the game logic from the data(story line) and the presentation
-  (text-based input and output) to follow a good design practice and keep code well-maintained.
-
-- The game defines various locations and sub locations, and the player can navigate through these  
-  areas based on their choices. The game uses text-based print statements to provide descriptions, dialogues, and narrations to convey the story and set more engaging atmosphere.
 
 ### Flowchart
 
