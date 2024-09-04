@@ -131,79 +131,59 @@ The Battleships game is built using an object-oriented approach, which organizes
 
 ## Existing Features
 
-### Welcome Screen
+###  1. Welcome Screen and Game Instructions
+ - Introduction: When the game starts, players are greeted with a welcome message and provided with detailed instructions on how to play the game. This includes an explanation of the board layout, how to place ships, and the rules for taking shots.
+ - Name Entry: Players are prompted to enter their name, which is validated to ensure it's alphabetic. This personalizes the game experience.
 
-- The main game title in ASCII text Art and a welcome message is shown when user hits the run program
-  button. The welcome message is given a typewriter effect for a more game-immersive experience.
-- User is provided with an overview about the game and a general idea on how to play the game.
-- As it is a Python terminal based game, it is designed to be functionality-focused rather than 
-  visually appealing. The structure though is designed keeping in mind the aspects of the game.
+![welcome_screen_image](assets/feutures/welcome-screen.png)
 
-  ![welcome_screen_image](assets/welcome_screen_image.png)
+### 2.  Ship Placement
+ - Manual Ship Placement: Players can choose to manually place their ships on the board by entering specific coordinates. This feature allows for strategic placement, giving the player control over their setup.
+ - Automatic Ship Placement: For quicker gameplay or less experienced players, the game offers an option to automatically place ships. This feature randomly generates valid positions for ships, ensuring a valid and fair layout.
 
+![ship placement_image](assets/feutures/ship-placement.png)
 
-### Start Game Section
+![auto ship placement_image](assets/feutures/auto-ship-placement.png)
 
-- Here user is prompted whether he wants to start the game, based on choices the game proceeds. If
-  user has entered 'no' he is encouraged to play the game by providing a suitable feedback.
-- The user can add their name to give them a personalised welcome to the game. The user's name is
-  further used in the game story for providing player with a more engaging atmosphere.
+### 3. Player vs. Computer Gameplay
+ - Turn-Based System: The game operates on a turn-based system where the player and the computer take alternate turns to shoot at each other's ships. The player’s board and the computer’s board are updated after each shot to reflect hits, misses, and ship completions.
+ - Shooting Validation: Both player and computer shots are validated to ensure they are within bounds and not repeated. This ensures fair gameplay and prevents errors.
+ - Computer Tactics: The computer employs a basic strategy (tactics) to make its shots more effective, especially after a hit. This adds a layer of challenge for the player.
 
-![start_game_image](assets/start_game_image.png)
+![player shot_image](assets/feutures/user-shot.png)
 
+### 4. Board display
+ - Board Display: The game board is displayed after each turn, showing the status of hits, misses, and ship placements (for the player's board). The computer's board only reveals the outcome of shots without showing ship positions until they are hit.
+ - Symbols:
+ - " _ " represents an unexplored coordinate.
+ - " X " indicates a hit.
+ - " o " represents a miss.
+ - " @ " shows a ship's position (on the player's board only, when revealed).
+ - " S " indicates a ship has been completely sunk.
 
-### Game Steps Section
+### 5. Scoring System
+ - Hit and Miss Tracking: The game keeps track of successful hits and missed shots for both the player and the computer. The player’s score is incremented for each successful hit.
+ - Completion Check: After each hit, the game checks whether a ship has been fully sunk, and if all ships are sunk, the game declares a winner.
 
-- The user is then taken through a story with different scenarios and locations with detailed
-  explanation of the journey and provided choices for the user to choose from which path they want to take. Choosing different paths can lead to different outcomes.
+![board display and scores_image](assets/feutures/score.png)
 
-- Each story step is detailed and well-structured to give user an engaging adventure experience.
+### 6. Game End and Replay
+ - Win Condition: The game ends when one player sinks all of the opponent's ships. A message is displayed declaring the winner, either the player or the computer.
+ - Play Again Option: After the game ends, the player is given the option to play again or exit the game. This feature allows for continuous play without restarting the program.
 
+![end of the game_image](assets/feutures/end-of-the-game.png)
 
-![start_story_step](assets/play_game_image_step.png)
+### 7.  User-Friendly Error Handling
+ - Input Validation: Throughout the game, inputs are validated to prevent errors. For example, the game checks for valid coordinates during ship placement and shot selection. If an invalid input is detected, the player is prompted to re-enter their choice.
+ - Graceful Exits: Players can exit the game at any point during the ship placement phase if they choose not to continue.
 
+![input error_image](assets/feutures/input-invalid-coordinate.png)
 
-- The storyline is designed to keep each step interconnected and user is provided with two options to 
-  choose from, based on the user choice the game paths can result in different outcomes. 
+### 8.  Randomized Gameplay Elements
+ - Ship Placement and Shot Selection: The computer's ship placement and shot selection are randomized, ensuring that each game is unique and unpredictable. This randomness makes the game more challenging and replayable.
 
-
-![story_steps](assets/play_game_image.png)
-
-
-### Success and Failure Outcomes
-
-- Based on user choices, there are multiple paths which can lead to either success or failure
-  outcomes.
-- The game is designed in such a way that user can explore multiple scenarios and locations based
-  upon the choices resulting in either of the outcomes.
-- At the end of the user's journey, they are presented with a final text depending on their success or
-  failure in the quest.
-
-   - Success Text for the quest:
-     
-     ![success_outcome_image](assets/success_outcome_image.png)
-
-   - Failure Text for the quest:
-     
-     ![failure_outcome_image](assets/fail_outcome_image.png)
-
-
-- At the end, regardless of success or failure user is offered to play the game again. Based on the
-  choice, the game either starts from the beginning or exits with a message.
-
-  ![play_again_image](assets/play_again_image.png)
-
-
-## Future Implementations 
- 
-- To fix the identified bugs in the game.
-- Add colours to text and imagery for visual effect.
-- Expand the story for multiple levels(easy, medium and difficult) to give user more deeper and
-   immersive game experience.
-- Use of google doc/ sheet to keep track of the number of players, their win and lose outcomes, a 
-  form of leader board to display at the end of the game. This will give me opportunity to work with google spreadsheets to perform CRUD operations.
-
-
+### 9. Modular Code Design
+ - Object-Oriented Approach: The game is designed using an object-oriented approach, making it modular and easier to maintain or expand. Key components like Ship, Board, and Game are encapsulated within their respective classes.
 
 ## Testing
 
@@ -216,12 +196,8 @@ The Battleships game is built using an object-oriented approach, which organizes
 
   - validated run.py file:
      
-     ![run_validator_testing](assets/python_validation_runpy_file.png)
+     ![run_validator_testing](assets/testing/test.png)
 
-  
-  - validated story.py file:
-
-    ![story_validator_testing](assets/python_validation_storypy_file.png)
 
 
 
@@ -229,48 +205,45 @@ The Battleships game is built using an object-oriented approach, which organizes
 
 - I tested the site in my local terminal and Code Institute Heroku Terminal.
 - For user testing, I passed the application link to my friends and family and received positive 
-  feedback, with some points to fix.
+  feedback.
 
 - Input Validation:
 
 The application is tested extensively for input validation. I have manually tested it by doing 
 following:
 
-1. Proceed further with no input or input incorrect character/number for "Are you ready to play the 
-   game" prompt.
+1. Proceed further with input incorrect character/number for "Enter your name" propmt.
      
-    - Response: Receive an error message and prompt "Are you ready to play the game"(yes/no) again.
+    - Response: Receive an error message and prompt "Invalid data entered, please enter your name".
 
     
-    ![start_game_input_validation](assets/start_game_input_validation.png)
+    ![enter your name_input_validation](assets/testing/enter-name-invalid.png)
 
 
-2. Input username with less than 3 characters/ containing special characters/ proceed without 
-   entering one.  
+2. Input ship placement option with numbers or out of option characters or proceed without entering one. 
   
-    - Response: Error message is displayed based on the user action and a prompt to enter user name.
+    - Response: An Error: " Invalid data entered.please try again " comes up.
 
 
-    ![username_input_validation](assets/username_input_validation.png)
+    ![ship placement option_input_validation](assets/testing/ship-placement-error.png)
 
 
-3. Input incorrect choice other than 1 and 2 for "Enter your choice" prompt while playing the game  
-   for different paths.
+3. Input, incorrect and invalid coordinates to place the ships manualy.
 
-    - Response: Error message is displayed for invalid choice and user is prompted to enter the 
-                choice again.
-
-
-    ![play_game_input_validation](assets/play_game_input_validation.png)        
+    - Response: Error message is displayed for the numbers greater than 99 and smaller than 0 : "Error: Enter a number between 0-99.. Please enter a valid number."
+    - Error message is displayed for character or letter input: "Error: invalid literal for int() with base 10: 'g'. Please enter a valid number.
 
 
-4. At the end of the game, input incorrect character/ number/ press 'enter' with no input given for 
-  "Would you like to play again" prompt.
-
-    - Response: Receive an error message and prompt to enter the choice(yes/no) again.
+    ![input ship coordinates validation](assets/testing/incorrect-ship-placement-enter.png)        
 
 
-    ![play_again_input_validation](assets/play_again_input_validation.png)
+4. Input, incorrect and invalid coordinates to guess or shot the computer's ships. 
+
+    - Response: Receive an error message and prompt for entering the number out of range: Invalid input data entered or used number entered.
+    - response: Receive an error message and prompt for entering a letter: Please enter a valid number 0-99.
+
+
+    ![shot _input_validation](assets/testing/incorrect-shot-input.png)
 
 
 ### Functional Testing:
@@ -279,84 +252,52 @@ Functional testing for user stories is as follows:
 
 1. Expected: As a user, I want to understand the purpose and intention of the site and application  
    when I run the program.
-    - Result: When user clicks on run program, the title in ASCII art and a welcome message with
-              general idea and rules is displayed.
+    - Result: When user clicks on run program, an instructions will display with
+              general idea and rules.
 
 2. Expected: As a user, I want the navigation to be intuitive and easy to understand.
     - Result: The user is provided with easy to understand options and choices to navigate throughout
               the game.
 
-3. Expected: As a user, I want to have an option to start the game.
-             As a user, I should not have to worry about capitalizing or lowercase when typing.
-    - Result: User is prompted with option for starting the game. Input by user(uppercase and
-              lowercase) is handled as required correctly.
-
 4. Expected: As a user, I want to be able to enter my name before I start to play the game.
-             I would like to see a welcome message and my name added to storyline for more engaging
+             I would like to see a welcome message and my name added for more engaging
              experience.
-    - Result: User is prompted to enter name which is further used in welcome message and storyline
-              for personalized experience.
+    - Result: User is prompted to enter name which is further used in welcome message for personalized experience.
 
 5. Expected: As a user, I want my input to be validated and error checked each time, so I can 
              re-enter my input/choice if it is invalid.
     - Result: Input validation is carried out at each step where user input is required and error 
               message is displayed if it is invalid prompting user to re-enter the input/choice.
 
-6. Expected: As a user, I want to receive the next part in the story depending on the input choices.
-             As a user, I want see the final outcome of the game based on the choices made.
-    - Result: User is taken further to next part of the game depending on the choices and paths taken
-              and provided with final text(success or failure) at the end of the game.
+6. Expected: As a user, I want to see the score after each turn.
+    - Result: User will see the score after each guess.
 
-7. Expected: As a user, I want to have an opportunity to play again regardless of success or failure 
-             in the game.
-    - Result: At the end of the game, user is given an option to play again, based on user choices,
+7. Expected: As a user, I want see the final result to see how many times I tried or computer tried to win the game.
+    - Result: At the end of the game, the user is given an option to play again, based on user choices,
               the game exits or start from beginning.
-
-8. User can explore different paths and scenarios with engaging story during the game, for multiple 
-   success and failure outcomes.
-
-
-### Unfixed Bugs
-
-- There is one unfortunate bug that hasn't been resolved. I have used typewriter effect for  displaying some parts of my game story text. During final stages of testing, a bug was discovered where the user can interfere with the game text while typewriter effect is printing which results in altering of the main storyline text. I was not able to trail any solution for the bug. During discussion with my mentor, he did come up with a solution. I wanted to study the solution code first before using it in my project, but with no time in hand, I decided to keep it unresolved as it is not breaking the underlying code.
-
-![typewriter_bug_image](assets/typewriter_bug.png)
-
-- When user inteferes with the computer typing effect, it can though result with some of the texts
-  taken in by following user input and displaying the error message of invalid choice/input. The user is re-prompted to input. But the flow of the game is not disturbed at any stage due to this bug. For smooth flow of the program it is best to enjoy the typwriter effect, sit back and play the game.
-
-![typing_effect_bug_image](assets/typing_effect_bug.png)
-
-- No other bugs are detected, the program runs smoothly at every stage for each user input and 
-  appropriate feedback as necessary.
 
 
 ## Tools and Technologies
 
 - [Python](https://www.python.org/) - used to develop the project (back end programming).
 - [GitHub](https://github.com/) - to host the source code online.
-- Codeanywhere built-in formatter to format structure for Python files in the project.
-- Codeanywhere - IDE to develop the website.
+- GitPod - IDE to develop the website.
 - Git to provide the version control to commit and push code to the repository.
 - [Am I Responsive](http://amiresponsive.blogspot.com/) to create the Mockup image in this README.
 - [Heroku](https://www.heroku.com/) - to deploy the app.
 - Code Institute [PYTHON LINTER](https://pep8ci.herokuapp.com/#) used to validate the python code for
   errors.
-- [Draw.io](https://app.diagrams.net/) - to create flowchart for the project.
-- [ASCII TEXT ART](https://fsymbols.com/) generator to create the command line title of the 
-  application.
+- [lucichart.com](https://www.lucidchart.com/pages/?) - to create flowchart for the project.
 - Code Institute's Template to generate the workspace for the project.
 
 
 ## Imports
-
-- sys: used for handling standard input and output streams during typewriter effect.
-- time: used for controlling the timing of text output game for typewriter effect.
-
+ - random
+ - randrange
 
 ## Version Control
 
-The site is developed through Codeanywhere IDE.
+The site is developed through GitPod IDE.
 
 - Git
 
@@ -369,7 +310,7 @@ The site is developed through Codeanywhere IDE.
 
 ## Cloning the Repository
 
-1. On Github navigate to the repository "gayatrig19/the-quest-adventures-game"
+1. On Github navigate to the repository "https://github.com/Naviid24/pp3-battleships"
 2. Click "Code" drop down menu - a green button shown right above the file list.
 3. Copy the URL of the repository using "HTTPS", "SSH" or "Github CLI".
 4. Open Git Bash.
@@ -383,7 +324,7 @@ The site is developed through Codeanywhere IDE.
 
 ## Forking
 
-1. On Github navigate to the repository "gayatrig19/the-quest-adventures-game"
+1. On Github navigate to the repository "https://github.com/Naviid24/pp3-battleships"
 2. Click "Fork" located towards top right corner on GitHub page.
 3. Select "owner" for the forked repository from the dropdown menu under "owner".
 4. It will create forked repo under the same name as original by default. 
@@ -430,25 +371,8 @@ The site is developed through Codeanywhere IDE.
 
 # Credits
 
-- [OPENAI](https://openai.com/) - used to create the storyline and plots for the game.
-- The code for typewriter effect is referred from <https://github.com/Pauldwyer/Choose-your-adventure/blob/main/stories.py>
-- The concept of how to use OOP in Python programming is studied from <https://www.educative.io/blog/how-to-use-oop-in-python> and <https://realpython.com/python3-object-oriented-programming/#:~:text=When%20you%20create%20an%20instance,from%20one%20instance%20to%20another.>
-- The implementation of the story dictionary and iteration in the project is guided by my mentor, Ronan McClelland.
-- Additional sources for implementing a game using data structures is studied from <https://medium.com/@a.hop/vocabulary-game-in-python-68932b850c49>
-- Stack Overflow
-- Code Institute mock terminal template to run the app.
-- [ASCII TEXT ART](https://fsymbols.com/) generator to create the command line title of the 
-  application.
-
-
-# Acknowledgements
-
-- I would like to express my gratitude to my mentor, Ronan McClelland, for his unwavering guidance,
-  moral support, encouragement, and invaluable suggestions throughout the project. The project review
-  sessions with my mentor, along with his solutions to my questions and the study materials he provided, were instrumental in the success of this project.
-- I am also deeply thankful to my family and friends for their willingness to test the app and
-  provide valuable feedback.
-- Thank you Slack Community for answering all my questions and doubts.
+- Use the Code Institute videoes
+- Watch a video on Youtube: "https://www.youtube.com/watch?v=tF1WRCrd_HQ"
 
 
 
