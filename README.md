@@ -45,32 +45,86 @@ The Battleships game is built using an object-oriented approach, which organizes
 ##### Methods:
  - is_sunk(): Checks if the ship has been sunk, returning True if all positions have been hit (i.e., the list of positions is empty), otherwise False.
 
+#### 2. Board
+ - Purpose: The Board class represents the game board where ships are placed and where guesses (shots) are made.
+##### Attributes:
+ - taken_positions: A list of integers representing all the positions on the board that are occupied by ships.
+ - ships: A list of Ship objects representing all the ships placed on the board.
+ - hits: A list of integers representing the positions that have been hit by guesses.
+ - misses: A list of integers representing the positions that have been guessed but did not hit a ship.
+ - completions: A list of integers representing positions where ships have been completely sunk.
+##### Methods:
+ - check_ok(boat): Validates whether a ship's placement is valid, checking for overlaps, out-of-bound positions, and correct alignment.
+ - add_ship(ship): Allows the player to manually add a ship to the board by specifying its positions.
+ - auto_add_ship(ship): Automatically places a ship on the board by randomly selecting valid positions.
+ - show_board(reveal_ships=False): Displays the board, showing hits, misses, and (optionally) the positions of ships.
+ - check_shot(shot): Checks if a shot hits any ship on the board and updates the ship's status accordingly.
 
-### Flowchart
+#### 3. Game
+##### Purpose: 
+ - The Game class manages the setup, progression, and conclusion of the game. It controls both the player’s and computer’s boards and tracks scores.
+##### Attributes:
+ - player_board: An instance of the Board class representing the player's board.
+ - computer_board: An instance of the Board class representing the computer's board.
+ - computer_board: An instance of the Board class representing the computer's board.
+ - player_guesses: A list of integers representing the positions guessed by the player.
+ - computer_guesses: A list of integers representing the positions guessed by the computer.
+ - computer_tactics: A list of integers representing the computer's next strategic guesses based on previous hits.
+ - player_score: An integer tracking the player's score (number of ships sunk).
+ - computer_score: An integer tracking the computer's score (number of ships sunk).
+##### Methods:
+ - setup(): Sets up the game by placing ships on both the player's and computer's boards, either manually or automatically.
+ - add_ship_for_player(ship): Prompts the player to place a ship either manually or automatically on their board.
+ - show_game_boards(): Displays both the player's and computer's boards, hiding or revealing ships as appropriate.
+ - get_shot(guesses): Prompts the player to input a valid guess (shot) and checks that it hasn't been guessed before.
+ - computer_shot(): Generates a guess for the computer, using tactics if a previous shot hit a ship.
+ - update_scores(hits, is_player): Updates the score for the player or computer based on whether a ship was hit.
+ - play_turn(is_player): Executes a turn for either the player or the computer, checking for hits and updating the board.
+ - calc_tactics(shot): Calculates the next set of potential shots for the computer based on the location of a previous hit.
+ - check_win(board): Checks if all ships on a board have been sunk, indicating a win for the opponent.
+ - ask_play_again(): Asks the player if they want to play another game after the current one ends.
+ - start(): Starts the game, running through the setup and gameplay loop until a winner is determined or the player chooses to quit.
 
-- Most of the text-based adventure games are primarily focused on providing user(player) with multiple
-  paths and choices to explore before reaching to it's final outcome(either success or failure).
+### Relationships Between Classes
+##### Game: 
+ - The central class that interacts with both the Player and Computer boards (Board instances) and coordinates the flow of the game.
+##### Board:
+ - Manages the layout of ships, tracks shots (hits and misses), and interacts with the Ship class to update ship statuses.
+##### Ship:
+ - Represents the individual ships on the board and tracks their status based on player and computer actions.
 
-- The initial design for this project was simple with minimal paths with single nodes leading to win
-   or lose outcomes. But I wanted the game to be more engaging such that players are presented with choices at various points in the game, and these choices lead to different story paths and outcomes.
 
-- To achieve this the flowchart was redesigned number of times, and each time the story was modified
-  for expected paths and choices until the point where it offered multiple endings, depending on the decisions the player makes throughout the game. These endings can vary in terms of success, failure and different story conclusions.
+### Flowchart Overview
 
-- The final flowchart design now showcase multiple paths with more engaging story narrative, offering 
-  multiple success and failure outcomes. Though the end result is either success or failure, but based on the user choices, the game has different paths and scenarios to reach the end.
+- The flowchart illustrates the logic and flow of the Battleships game, from the start of the game to its conclusion. The diagram is broken down into several key sections, each representing different stages of the game:
 
-- For each step, the users receives a prompt to write their input, and the input is cross-checked
-  against the code for validation. If the user input is invalid, they are given error feedback and prompted again to input on the same step. Once valid input is received, the user goes on to the next step.
+#### 1. Start and Setup:
+ - The game begins with the display of instructions, followed by the prompt for the player to enter their name.
+ - If the name is valid, the player moves on to ship placement. If the name is invalid, the player is asked to re-enter it.
+#### 2. Ship Placement:
+ - The player is given the option to place their ships either manually or automatically.
+ - The computer places its ships automatically.
+ - Both placements are validated to ensure they meet the game’s criteria (e.g., no overlap, valid coordinates).
+#### 3. Gameplay:
+ - Once ships are placed, the game enters the main gameplay loop where the player and the computer take turns shooting at each other's ships.
+ - Each shot (user or computer) is validated to ensure it targets an unused coordinate on the board.
+#### 4. Result Handling:
+ - Shots result in either a hit or a miss. Hits are further checked to see if they result in the sinking of a ship (completion).
+ - Scores are updated accordingly: a hit increases the score, while a miss does not.
+#### 5. Endgame:
+ - The game checks if all ships have been sunk (after 6 ships are sunk), which determines the winner.
+ - The player is then given the option to either play again or exit the game.
 
-- Regardless of the outcomes, user is provided option to play again, which either starts the game from
-  beginning or exits depending on user choice.
+### Flowchart Analysis
+##### Decision Points:
+ - The flowchart includes multiple decision points (e.g., checking the validity of a name, ship placement, and shot accuracy), ensuring that the game progresses correctly.
+##### Loops: 
+ - The gameplay loop repeats until a winner is determined, reflecting the turn-based nature of the Battleships game.
+##### Outcomes: 
+ - The game concludes with either a win for the player or the computer, after which the player can choose to restart or exit.
 
-- Below is the final flowchart design which can be followed to see all alternatives and their final
-  outcomes.
-   
 
-![The Quest Game Flowchart](assets/the_quest_flowchart_drawio.png)
+![The Quest Game Flowchart](assets/flow-chart/battleships-lucichart.png)
 
 
 # Features
