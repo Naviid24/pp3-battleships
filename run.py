@@ -310,7 +310,8 @@ def welcome_in():
     while True:
         name = input("Please enter your name: \n")
         if not name.isalpha():
-            print("Invalid data entered, please enter your name")
+            print("Please enter letters for your name")
+            print("_"*35)
         else:
             print(f"welcome Captain {name} ")
             break
