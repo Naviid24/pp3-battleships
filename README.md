@@ -372,7 +372,9 @@ The site is developed through GitPod IDE.
 # Credits
 
 - Use the Code Institute videoes
-- Watch a video on Youtube: "https://www.youtube.com/watch?v=tF1WRCrd_HQ"
+- Watch videos on Youtube:
+  - "https://www.youtube.com/watch?v=tF1WRCrd_HQ"
+  - "https://www.youtube.com/watch?v=Ej7I8BPw7Gk&list=PLpeS0xTwoWAsn3SwQbSsOZ26pqZ-0CG6i"
 
 
 
