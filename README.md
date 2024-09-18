@@ -124,7 +124,7 @@ The Battleships game is built using an object-oriented approach, which organizes
  - The game concludes with either a win for the player or the computer, after which the player can choose to restart or exit.
 
 
-![The Quest Game Flowchart](assets/flow-chart/battleships-lucichart.png)
+![The Quest Game Flowchart](assets/flow-chart/battleship-flow-chart.drawio.png)
 
 
 # Features
